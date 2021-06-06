@@ -3,15 +3,37 @@
 // You are climbing a staircase. It takes n steps to reach the top.
 // Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 
-// Something something factoring and shit
-
+// Done
 
 int climbStairs(int n) {
-    int output = 0;
-    // Any can be broken into 1's
-    
+    switch (n)
+    {
+        case 0:
+        {
+            return 0;
+        }
+        case 1:
+        {
+            return 1;
+        }
+        case 2:
+        {
+            return 2;
+        }
+    }
 
-    return 0;
+    int prev = 2;
+    int prev_prev = 1;
+    int all = 0;
+
+    for (int i = 2; i < n; i++)
+    {
+        all = prev + prev_prev;
+        prev_prev = prev;
+        prev = all;
+    }
+
+    return all;
 }
 
 int main() {
