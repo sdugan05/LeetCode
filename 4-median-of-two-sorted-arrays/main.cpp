@@ -33,33 +33,27 @@ double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2) 
         if (a_part_1 >= 0) {
             a_left = vec_a.at(a_part_1);
         } else {
-            a_left = -10000;
+            a_left = -10000000;
         }
 
         if (a_part_1 + 1 < vec_a.size()) {
             a_right = vec_a.at(a_part_1 + 1);
         } else {
-            a_right = 10000;
+            a_right = 10000000;
         }
 
 
         if (b_part_1 >= 0) {
             b_left = vec_b.at(b_part_1);
         } else {
-            b_left = -10000;
+            b_left = -10000000;
         }
 
         if (b_part_1 + 1 < vec_b.size()) {
             b_right = vec_b.at(b_part_1 + 1);
         } else {
-            b_right = 10000;
+            b_right = 10000000;
         }
-
-        std::cout << a_left << std::endl;
-        std::cout << a_right << std::endl;
-        std::cout << b_left << std::endl;
-        std::cout << b_right << std::endl;
-
         // Check if the split is correct
         if (a_left <= b_right && b_left <= a_right) {
             // If the total length is odd
@@ -86,7 +80,7 @@ double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2) 
                 min_right = b_right;
             }
             
-            int avg = (max_left + min_right) / 2;
+            double avg = (double)(max_left + min_right) / 2;
             return avg;
         } else if (a_left > b_right) {
             right = a_part_1 - 1;
@@ -102,7 +96,7 @@ int main() {
     // Test case
     std::vector<int> input_a = {1, 3};
     
-    std::vector<int> input_b = {2};
+    std::vector<int> input_b = {2, 3};
     // 1, 1, 2, 2, 2, 3, 3, 5, 6
 
     std::cout << findMedianSortedArrays(input_a, input_b) << std::endl;
